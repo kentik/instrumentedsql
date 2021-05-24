@@ -35,7 +35,7 @@ func (c wrappedConnector) Connect(ctx context.Context) (conn driver.Conn, err er
 		return nil, err
 	}
 
-	return wrappedConn{opts: c.driverRef.opts, parent: conn}, nil
+	return WrappedConn{opts: c.driverRef.opts, Parent: conn}, nil
 }
 
 func (c wrappedConnector) Driver() driver.Driver {

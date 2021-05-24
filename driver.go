@@ -44,5 +44,5 @@ func (d WrappedDriver) Open(name string) (driver.Conn, error) {
 		return nil, err
 	}
 
-	return wrappedConn{opts: d.opts, parent: conn}, nil
+	return WrappedConn{opts: d.opts, Parent: conn}, nil
 }

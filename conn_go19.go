@@ -5,11 +5,11 @@ package instrumentedsql
 import "database/sql/driver"
 
 var (
-	_ driver.NamedValueChecker = wrappedConn{}
+	_ driver.NamedValueChecker = WrappedConn{}
 )
 
-func (c wrappedConn) CheckNamedValue(v *driver.NamedValue) error {
-	if checker, ok := c.parent.(driver.NamedValueChecker); ok {
+func (c WrappedConn) CheckNamedValue(v *driver.NamedValue) error {
+	if checker, ok := c.Parent.(driver.NamedValueChecker); ok {
 		return checker.CheckNamedValue(v)
 	}
 

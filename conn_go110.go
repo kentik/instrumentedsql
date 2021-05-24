@@ -7,10 +7,10 @@ import (
 	"database/sql/driver"
 )
 
-var _ driver.SessionResetter = wrappedConn{}
+var _ driver.SessionResetter = WrappedConn{}
 
-func (c wrappedConn) ResetSession(ctx context.Context) error {
-	conn, ok := c.parent.(driver.SessionResetter)
+func (c WrappedConn) ResetSession(ctx context.Context) error {
+	conn, ok := c.Parent.(driver.SessionResetter)
 	if !ok {
 		return nil
 	}
